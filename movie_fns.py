@@ -58,7 +58,7 @@ def get_title(moviestring):
 	leftindex=moviestring.find('(')
 
 	title=moviestring[:leftindex:]
-	title.rstrip()
+	title=title.strip()
 	return title
 
 def movie_info(movieurl):

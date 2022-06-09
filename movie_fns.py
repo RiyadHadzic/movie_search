@@ -38,7 +38,7 @@ def movie_urls(hstring):
 			url=hstring[:x:]
 
 			#append unique URL
-			movie.append('http://www.imdb.com/title/'+url)
+			movie.append('https://www.imdb.com/title/'+url)
 
 			leftindex=hstring[:x:]
 
@@ -51,6 +51,16 @@ def movie_urls(hstring):
 			hstring=hstring[leftindex::]
 	return movie
 
+def get_title(moviestring):
+	leftindex=moviestring.find('<title>')
+	leftindex=leftindex+len('<title>')
+	moviestring=moviestring[leftindex::]
+	leftindex=moviestring.find('(')
+
+	title=moviestring[:leftindex:]
+	title.rstrip()
+	return title
+
 def movie_info(movieurl):
 	movies=[]
 	for x in movieurl:
@@ -59,14 +69,3 @@ def movie_info(movieurl):
 		movie.append(get_title(moviehtml))
 		movies.append(movie)
 	return movies
-
-def get_title(moviestring):
-	leftindex=moviestring.find('"name"')
-	leftindex=leftindex+len('"name"')
-	moviestring=moviestring[leftindex::]
-	leftindex=moviestring.find('"')
-	moviestring=moviestring[leftindex::]
-	x=moviestring.find('"')
-	title=moviestring[:x-1:]
-	return title
-

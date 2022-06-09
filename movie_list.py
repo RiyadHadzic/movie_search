@@ -22,6 +22,7 @@ print(movies)
 f = open('movielist.txt','w')
 f.write(str(movies))
 f.close
+
 """
 
 
